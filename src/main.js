@@ -60,6 +60,7 @@ const panel = (p, i) => {
         <p class="eyebrow">Project ${p.num} · ${escapeHtml(p.kicker)}</p>
         <h2>${escapeHtml(p.title)}</h2>
         <p class="lede">${md(p.lede)}</p>
+        ${p.role ? `<p class="role">Role · ${escapeHtml(p.role)}</p>` : ''}
         <ul class="chips-static">${p.stack.map(([n]) => `<li>${escapeHtml(n)}</li>`).join('')}</ul>
       </div>
     </header>
@@ -128,7 +129,7 @@ document.getElementById('app').innerHTML = `
       <p class="hero-lede">${escapeHtml(site.tagline)}</p>
       <p class="hero-sub">${escapeHtml(site.intro)}</p>
       <dl class="hero-stats">
-        <div><dt>6</dt><dd>working prototypes</dd></div>
+        <div><dt>${projects.length}</dt><dd>working prototypes</dd></div>
         <div><dt>0</dt><dd>installs or API keys</dd></div>
         <div><dt>2D→3D</dt><dd>every project bridges both</dd></div>
       </dl>
