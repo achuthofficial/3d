@@ -1,11 +1,12 @@
 # Flat → Form
 
-**Six AI-powered tools that carry Adobe Illustrator artwork into 3D.**
+**One flagship pipeline panel and six AI-powered tools that carry Adobe Illustrator artwork into 3D.**
 
 A single-page portfolio site with one tab per project. Each tab tells the project's story (the friction it removes, the concept, how it works, the tech stack and the "wow" factor) and includes a **working prototype that runs in the browser**, plus the core Illustrator/host code behind it.
 
 | # | Tab | What the live prototype does |
 |---|-----|------------------------------|
+| 00 | **Illustra3D-AI** | The full split-screen pipeline panel: Illustrator-style dieline artboard and layer manager, a real-time PBR hex carton (exploded-dieline morph, turntable, foil emboss), a Gen-AI texture suite with two models, a live ExtendScript/UXP terminal, and an export that downloads a ZIP with GLB, SVG, a 300 dpi PDF with CutContour spot lines and a manifest. Ships as one self-contained file: `public/illustra3d.html` (served at `/illustra3d.html`). |
 | 01 | **Packaging Pipeline** | Paints a dieline from your brand inputs, folds the six panels into a 3D box, generates a themed scene from a prompt and exports a PNG mockup. |
 | 02 | **Pattern → Texture** | Prompt → raster tile → real vector trace (marching squares + RDP + Bézier fitting) → brand recolour → seamless texture on a mug, sphere, knot or skate deck. Downloads SVG/PNG. |
 | 03 | **Batch Localisation** | CSV of 20 locales → translations → typography auto-fit (tracking, size, wrapping, RTL) → 20 labels → 20 WebGL product renders and a contact sheet. |
@@ -40,18 +41,19 @@ vercel          # preview deployment
 vercel --prod   # production deployment
 ```
 
-Each tab is deep-linkable: `/#packaging`, `/#pattern`, `/#localization`, `/#extrude`, `/#brandcheck`, `/#typography`.
+Each tab is deep-linkable: `/#workspace`, `/#packaging`, `/#pattern`, `/#localization`, `/#extrude`, `/#brandcheck`, `/#typography`.
 
 ## Project structure
 
 ```
 index.html              page shell, fonts, meta
 src/main.js             layout, tabs, hash routing, lazy-loading of demos
-src/content.js          the six project stories (edit text here)
+src/content.js          the project stories for all seven tabs (edit text here)
 src/styles.css          design tokens and all styles
 src/demos/*.js          one interactive prototype per project (loaded on first visit to its tab)
 src/lib/                shared Three.js stage, vector tracing, colour science, noise, DOM helpers
 src/snippets/           Illustrator / CEP / Python source shown under "Under the hood"
+public/illustra3d.html  tab 00: the Illustra3D-AI workspace as a single self-contained HTML file
 vercel.json             Vercel build settings
 ```
 

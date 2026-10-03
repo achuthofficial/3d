@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CSXS/manifest.xml: registers the Illustra3D-AI panel with Illustrator -->
+<ExtensionManifest Version="11.0" ExtensionBundleId="com.illustra3d.ai" ExtensionBundleVersion="1.4.0">
+  <ExtensionList>
+    <Extension Id="com.illustra3d.ai.panel" Version="1.4.0" />
+  </ExtensionList>
+  <ExecutionEnvironment>
+    <HostList>
+      <Host Name="ILST" Version="[25.0,99.9]" />
+    </HostList>
+    <LocaleList>
+      <Locale Code="All" />
+    </LocaleList>
+    <RequiredRuntimeList>
+      <RequiredRuntime Name="CSXS" Version="11.0" />
+    </RequiredRuntimeList>
+  </ExecutionEnvironment>
+  <DispatchInfoList>
+    <Extension Id="com.illustra3d.ai.panel">
+      <DispatchInfo>
+        <Resources>
+          <MainPath>./index.html</MainPath>
+          <ScriptPath>./host/bridge.jsx</ScriptPath>
+          <CEFCommandLine>
+            <Parameter>--enable-nodejs</Parameter>
+          </CEFCommandLine>
+        </Resources>
+        <UI>
+          <Type>Panel</Type>
+          <Menu>Illustra3D-AI</Menu>
+          <Geometry>
+            <Size><Height>820</Height><Width>1320</Width></Size>
+          </Geometry>
+        </UI>
+      </DispatchInfo>
+    </Extension>
+  </DispatchInfoList>
+</ExtensionManifest>

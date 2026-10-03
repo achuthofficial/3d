@@ -13,16 +13,55 @@ import brandAudit from './snippets/brandAudit.jsx?raw';
 import autoFix from './snippets/autoFix.jsx?raw';
 import outlineSelection from './snippets/outlineSelection.jsx?raw';
 import displace from './snippets/displace.js?raw';
+import cepManifest from './snippets/manifest.xml?raw';
+import hostBridge from './snippets/bridge.jsx?raw';
+import panelSync from './snippets/panelSync.js?raw';
 
 export const site = {
   name: 'Flat → Form',
   author: 'Achuth Dintakurthi',
-  tagline: 'Six AI-powered tools that carry Adobe Illustrator artwork into 3D.',
+  tagline: 'One flagship pipeline panel and six AI-powered tools that carry Adobe Illustrator artwork into 3D.',
   intro:
-    'Each tab tells one project’s story: the friction it removes, how it works, and the stack behind it. Each one also has a working prototype you can use right here in the browser. Nothing to install.',
+    'Tab 00 is the full Illustrator → 3D workspace. Tabs 01–06 each tell one project’s story: the friction it removes, how it works, and the stack behind it. Every tab has a working prototype you can use right here in the browser. Nothing to install.',
 };
 
 export const projects = [
+  {
+    id: 'workspace',
+    num: '00',
+    tab: 'Illustra3D-AI',
+    kicker: 'Flagship · full pipeline panel',
+    role: 'Principal Creative Technologist & Adobe Pipeline Engineer',
+    title: 'Illustra3D-AI: Enterprise 2D → 3D Pipeline Panel',
+    lede: 'An Illustrator UXP / CEP extension panel in one split-screen workspace: a live vector artboard, a real-time PBR viewport and a Gen-AI control centre, joined by a scripted host bridge.',
+    problem:
+      'Projects 01–06 each solve one link in the chain. In a real studio those links live in separate tools: Illustrator for the dieline, a 3D app for the mockup, an AI web app for textures, a folder of scripts for exports. Every hand-off between them is a manual export–import loop.',
+    concept:
+      '“Illustra3D-AI”: an enterprise Adobe Illustrator UXP / CEP extension panel demonstrating seamless 2D-to-3D pipeline automation, procedural vector mapping and generative AI texture synthesis. It is a fully interactive, production-grade WebGL simulation in a single HTML/CSS/JavaScript file: the Illustrator vector canvas and layer DOM on the left, a Three.js real-time viewport in the centre, and the UXP automation and Gen-AI control centre on the right.',
+    steps: [
+      ['Vector canvas & layer DOM', 'An interactive packaging dieline built from dynamic SVG paths, with a Layer Manager for [Dieline_Cutline], [Brand_Logo], [AI_Texture_Layer] and [Foil_Finish]. Click or type to edit text, swap vector decals and adjust brand colours.'],
+      ['Vector-to-UV mapping', 'Every edit re-bakes the artboard into a dynamic CanvasTexture laid out on the dieline’s UV islands, so the 3D model updates in real time.'],
+      ['Real-time 3D viewport', 'An angular hexagonal carton in MeshPhysicalMaterial with clearcoat, micro-roughness, embossed metallic foil stamping and environment reflections, lit by a key, rim and softbox-fill rig over a shadow plane. Exploded Dieline morphs it flat and back; Turntable spins it 360°.'],
+      ['Gen-AI control centre', 'Type a prompt, pick Diffusion Latent-Texture v3 or Vector-Trace ControlNet, then Generate & Bake. The panel shows the denoising run and bakes albedo, roughness and specular bump maps onto the texture coordinates.'],
+      ['Automation terminal & export', 'A live ExtendScript / UXP console logs every call (and takes commands). Export for Production writes a GLB, an SVG vector bundle, a print PDF and a manifest into one ZIP.'],
+    ],
+    stack: [
+      ['HTML5 · CSS Grid / Flexbox', 'Spectrum-style dark workspace'],
+      ['Three.js (CDN)', 'OrbitControls, PBR, RectAreaLight'],
+      ['UXP / CEP + ExtendScript', 'Host-bridge simulation'],
+      ['Vector-to-UV engine', '2D canvas → dynamic CanvasTexture'],
+      ['Gen-AI pipeline simulation', 'Prompt-to-texture & vector style transfer'],
+    ],
+    wow: 'Artwork, 3D preview, AI texture exploration and production export all happen in one panel, and every edit reaches the 3D product within a frame or two. It is the other six ideas working together as one tool.',
+    prototype:
+      'Double-click text on the artboard to edit it, toggle layer visibility, swap decals and palettes, try the prompt chips in both models, flip Exploded Dieline, and type help in the terminal. Export for Production downloads a real ZIP: a GLB, an SVG with named layers, a 300 dpi PDF with CutContour and Crease spot-colour lines, and a manifest. The AI and Illustrator host calls are simulated in the browser and labelled as such. Use “Open full screen” for the roomiest view.',
+    code: [
+      { file: 'manifest.xml', lang: 'CEP manifest', src: cepManifest },
+      { file: 'bridge.jsx', lang: 'ExtendScript', src: hostBridge },
+      { file: 'sync.js', lang: 'CEP · JavaScript', src: panelSync },
+    ],
+    demo: () => import('./demos/workspace.js'),
+  },
   {
     id: 'packaging',
     num: '01',
